@@ -23,4 +23,6 @@ export default (props) => {
 
 const Wrapper = styled.div`
   width: 25%;
+  display: flex;
+  justify-content: center;
 `

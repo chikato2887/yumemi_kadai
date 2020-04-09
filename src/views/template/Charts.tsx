@@ -43,17 +43,16 @@ export default class Chart extends Component<IProps> {
           height={300}
           data={resourcesPerYear}
           margin={{
-            top: 5, right: 30, left: 20, bottom: 5,
+            top: 5, right: 50, left: 20, bottom: 5,
           }}
           >
             <CartesianGrid />
-            <XAxis dataKey="year" />
-            <YAxis />
+            <XAxis dataKey="year" label={{value: "年度", position: 'right', offset: 20}}/>
+            <YAxis label={{value: "人口数", position: 'top', offset: 10}} />
             <Tooltip />
-            <Legend />
+            <Legend align="right" verticalAlign="top"/>
             {selectedPrefectureCodes.map(prefCode => {
-              return <Line 
-                        type="monotone" 
+              return <Line  
                         dataKey={`pref-${prefCode}`} 
                         key={prefCode} 
                         name={codeToName[prefCode]}
