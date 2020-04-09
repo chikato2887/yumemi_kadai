@@ -3,16 +3,15 @@ import styled from "styled-components"
 import { FormControlLabel, Checkbox } from "@material-ui/core";
 
 export default (props) => {
-  const [isSelected, changeSelect] = useState(false);
-
   return (
     <Wrapper>
       <FormControlLabel
         control={
           <Checkbox
-            checked={isSelected}
-            onChange={() => changeSelect(!isSelected)}
+            checked={props.checked}
+            onChange={(e) => props.onChange(Number(e.target.value))}
             name={`pref-${props.prefCode}`}
+            value={props.prefCode}
             color="primary"
           />
         }

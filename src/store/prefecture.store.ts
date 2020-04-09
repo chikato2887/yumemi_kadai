@@ -11,7 +11,7 @@ class PrefectureStore {
   resourcesPerYear: IChartInput[] = [];
 
   @observable
-  selectedPrefectureCode: number[] = [1];
+  selectedPrefectureCodes: number[] = [13];
 
   @action
   addPrefectures = (input: IChartInput) => {
@@ -41,7 +41,14 @@ class PrefectureStore {
       console.log("invalid prefecture code");
       return;
     }
-    this.selectedPrefectureCode.push(prefCode);
+    const isAlreadyIncluded = this.selectedPrefectureCodes.findIndex(code => code === prefCode);
+    if(isAlreadyIncluded === -1) {
+      this.selectedPrefectureCodes.push(prefCode)
+      this.selectedPrefectureCodes = [].concat(this.selectedPrefectureCodes); 
+    } else {
+      const filterCodes = this.selectedPrefectureCodes.filter(code => code !== prefCode);
+      this.selectedPrefectureCodes = filterCodes;
+    }
   }
 }
 

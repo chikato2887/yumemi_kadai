@@ -35,6 +35,7 @@ export const getPopulationCompositions = async (prefCode: number, cityCode: numb
     const url = "/api/v1/population/composition/perYear?" + params.toString()
     const response = await _instance.get(url) 
     if(response.status !== 200) throw [response.status, response.statusText]
+    console.log("requested");
     return response.data.result;
   } catch (error) {
     console.error("error", error);

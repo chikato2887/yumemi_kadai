@@ -21,13 +21,15 @@ export default class Chart extends Component<IProps> {
 
   resourceManager = new ResourceManager();
 
-  async componentDidMount() {    
-    this.resourceManager.add(1);
-    this.resourceManager.add(2);
+  async componentDidMount() {
+    const { selectedPrefectureCodes } = this.props.prefectures;
+    selectedPrefectureCodes.forEach(prefCode => {
+      this.resourceManager.add(prefCode);
+    })
   }
 
   render() {
-    const { resourcesPerYear } = this.props.prefectures;
+    const { resourcesPerYear, selectedPrefectureCodes } = this.props.prefectures;
     return (
       <Wrapper>
         <LineChart
@@ -40,8 +42,9 @@ export default class Chart extends Component<IProps> {
           >
             <XAxis dataKey="year" />
             <YAxis />
-          <Line type="monotone" dataKey="pref-1" />
-          <Line type="monotone" dataKey="pref-2" />
+            {selectedPrefectureCodes.map(prefCode => {
+              return <Line type="monotone" dataKey={`pref-${prefCode}`} key={prefCode} />
+            })}
         </LineChart>
       </Wrapper>
     );
