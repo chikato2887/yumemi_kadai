@@ -16,4 +16,8 @@ const Wrapper = styled.header`
   align-items: center;
   justify-content: center;
   background-color: #66bb6a;
+
+  & > h1 {
+    font-family: 'Rajdhani', sans-serif;
+  }
 `
