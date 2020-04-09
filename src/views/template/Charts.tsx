@@ -10,6 +10,7 @@ import {
   Legend,
   CartesianGrid
 } from "recharts";
+import randomColor from "randomcolor";
 
 import { prefectureStoreType } from "../../store/prefecture.store";
 import { ResourceManager } from "../../api/resource";
@@ -51,7 +52,13 @@ export default class Chart extends Component<IProps> {
             <Tooltip />
             <Legend />
             {selectedPrefectureCodes.map(prefCode => {
-              return <Line type="monotone" dataKey={`pref-${prefCode}`} key={prefCode} name={codeToName[prefCode]}/>
+              return <Line 
+                        type="monotone" 
+                        dataKey={`pref-${prefCode}`} 
+                        key={prefCode} 
+                        name={codeToName[prefCode]}
+                        stroke={randomColor({seed: prefCode ** 3 })}
+                        />
             })}
         </LineChart>
       </Wrapper>

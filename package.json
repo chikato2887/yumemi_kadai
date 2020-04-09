@@ -13,6 +13,7 @@
     "axios": "^0.19.2",
     "mobx": "^5.15.4",
     "mobx-react": "^6.2.2",
+    "randomcolor": "^0.5.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
@@ -44,6 +45,7 @@
   "devDependencies": {
     "@types/axios": "^0.14.0",
     "@types/jest": "^25.2.1",
+    "@types/randomcolor": "^0.5.4",
     "@types/recharts": "^1.8.9",
     "@types/styled-components": "^5.0.1"
   }
