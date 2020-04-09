@@ -51,6 +51,5 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-  overflow: scroll;
-
+  overflow: scroll; 
 `

@@ -18,5 +18,7 @@ export default class Top extends Component {
 }
 
 const Wrapper = styled.div`
-
+  & > h2 {
+    margin-top: 20px;
+  }
 `

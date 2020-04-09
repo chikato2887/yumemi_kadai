@@ -36,11 +36,12 @@ export default class Chart extends Component<IProps> {
   render() {
     const { resourcesPerYear, selectedPrefectureCodes } = this.props.prefectures;
     const codeToName = codeToNameConverter();
+    const chartWidth = Math.floor(window.innerWidth * 0.8);
     return (
       <Wrapper>
         <LineChart
-          width={500}
-          height={300}
+          width={chartWidth}
+          height={400}
           data={resourcesPerYear}
           margin={{
             top: 5, right: 50, left: 20, bottom: 5,
