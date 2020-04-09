@@ -5,11 +5,15 @@ import {
   LineChart,
   XAxis,
   YAxis,
-  Line
+  Line,
+  Tooltip,
+  Legend,
+  CartesianGrid
 } from "recharts";
 
 import { prefectureStoreType } from "../../store/prefecture.store";
 import { ResourceManager } from "../../api/resource";
+import { codeToNameConverter } from "../../constants";
 
 interface IProps {
   prefectures?: prefectureStoreType;
@@ -30,6 +34,7 @@ export default class Chart extends Component<IProps> {
 
   render() {
     const { resourcesPerYear, selectedPrefectureCodes } = this.props.prefectures;
+    const codeToName = codeToNameConverter();
     return (
       <Wrapper>
         <LineChart
@@ -40,10 +45,13 @@ export default class Chart extends Component<IProps> {
             top: 5, right: 30, left: 20, bottom: 5,
           }}
           >
+            <CartesianGrid />
             <XAxis dataKey="year" />
             <YAxis />
+            <Tooltip />
+            <Legend />
             {selectedPrefectureCodes.map(prefCode => {
-              return <Line type="monotone" dataKey={`pref-${prefCode}`} key={prefCode} />
+              return <Line type="monotone" dataKey={`pref-${prefCode}`} key={prefCode} name={codeToName[prefCode]}/>
             })}
         </LineChart>
       </Wrapper>

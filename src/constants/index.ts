@@ -140,3 +140,9 @@ export const prefectures = [{
   "prefCode": 47,
   "prefName": "沖縄県"
 }]
+
+export const codeToNameConverter = () => {
+  const _codeToNameDict = {};
+  prefectures.forEach(pref => _codeToNameDict[pref.prefCode] = pref.prefName);
+  return _codeToNameDict;
+}
