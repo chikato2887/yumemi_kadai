@@ -8,9 +8,9 @@ class Tmp extends Component {
   }
 
   async componentDidMount() {
-    const res = await getTotalPopulations(11, 11362);
-    if(!res) return ;    
-    this.setState({responses: res.data})
+    const populations = await getTotalPopulations(11, 11362);
+    if(!populations) return ;
+    this.setState({responses: populations})
   }
 
   render() {

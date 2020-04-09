@@ -10,7 +10,7 @@ export interface IPopulationCompositionApiResponseBody {
   boundaryYear: number;
   data: [{
     label: string;
-    data: IPopulationComposition;
+    data: IPopulationComposition[];
   }];
 }
 
@@ -27,7 +27,7 @@ const _instance = axios.create({
   }
 });
 
-const _getPopulationCompositions = async (prefCode: number, cityCode: number | string = "-"): Promise<IPopulationCompositionApiResponseBody| undefined> => {
+export const getPopulationCompositions = async (prefCode: number, cityCode: number | string = "-"): Promise<IPopulationCompositionApiResponseBody| undefined> => {
   try {
     const params = new URLSearchParams();
     params.append("cityCode", String(cityCode));
@@ -42,7 +42,8 @@ const _getPopulationCompositions = async (prefCode: number, cityCode: number | s
 }
 
 export const getTotalPopulations = async (prefCode: number, cityCode: number | string = "-") => {
-  const response = await _getPopulationCompositions(prefCode, cityCode);
-  if(response == undefined) return ;
-  return response.data.filter(item => item.label == "総人口")[0]
+  const response = await getPopulationCompositions(prefCode, cityCode);
+  if(response === undefined) return ;
+  const populations = response.data.filter(item => item.label === "総人口")[0];
+  return populations.data;
 }
